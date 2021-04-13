@@ -1509,7 +1509,10 @@ def c(num):
     for k in range(len(num)):
         if not num[k].isdigit():
             re = eval(num[:k])
-            im = eval(num[k:-1])
+            im_part = num[k:-1]
+            if len(im_part) == 1:
+                im_part += '1'
+            im = eval(im_part)
             break
     return comp(re, im, num[-1])
 
