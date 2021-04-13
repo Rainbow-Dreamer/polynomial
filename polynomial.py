@@ -1,17 +1,18 @@
 import copy, fractions, math
-VALID = "A valid polynomial defined here is in the form ax^n1bx^n2 + ... + \n\
-ax^n + bx^n-1 + ... + ax + bx + c, you can set any number of variables here, \n\
-just to make sure when you want to show a power use '^' and use + or - between \n\
-every term. Note that the coefficient of every term should be placed at the\n\
-beginning of term, if you want to  create a polynomial like 3x2y which\n\
-means 6xy actually, then use brackets like 3x(2y) or (3x)2y or (3x)(2y).\n\
-Whitespaces between terms is not necessary. Some examples of valid \n\
-polynomials here: 2x; 2xy+3x+3; 2x^2y-3+y; 2x^2x + xy + y^3 \n\
-xyz+3x^2+6x; 3; 2x + 5y + x^-2 + 6, some invalid polynomials example: 3x**y; \n\
-2x**2 + 3; 2x^2x^3; 5x**3 + xy**6\n\
-Feel free to leave the polynomial unmerged in every term, \n\
-because my program will automatically do it when it analyze your polynomial. To\n\
-merge through all of the terms just do a.standarlize() where a is a polynomial object."
+
+VALID = '''A valid polynomial defined here is in the form ax^n1bx^n2 + ... + 
+ax^n + bx^n-1 + ... + ax + bx + c, you can set any number of variables here, 
+just to make sure when you want to show a power use '^' and use + or - between 
+every term. Note that the coefficient of every term should be placed at the
+beginning of term, if you want to  create a polynomial like 3x2y which
+means 6xy actually, then use brackets like 3x(2y) or (3x)2y or (3x)(2y).
+Whitespaces between terms is not necessary. Some examples of valid 
+polynomials here: 2x; 2xy+3x+3; 2x^2y-3+y; 2x^2x + xy + y^3 
+xyz+3x^2+6x; 3; 2x + 5y + x^-2 + 6, some invalid polynomials example: 3x**y; 
+2x**2 + 3; 2x^2x^3; 5x**3 + xy**6
+Feel free to leave the polynomial unmerged in every term, 
+because my program will automatically do it when it analyze your polynomial. To
+merge through all of the terms just do a.standarlize() where a is a polynomial object.'''
 
 
 def separate(co):
@@ -2394,3 +2395,6 @@ def factorize_show(a, merge=False):
             return merged
         else:
             return result
+
+
+P = p = poly
