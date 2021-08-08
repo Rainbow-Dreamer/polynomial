@@ -22,8 +22,8 @@ except:
 
 os.chdir('..')
 sys.path.append('.')
-function_names = dir(__import__('polynomial'))
-from polynomial import *
+function_names = dir(__import__('polynomial.polynomial'))
+from polynomial.polynomial import *
 
 os.chdir('polynomial editor')
 with open('config.py', encoding='utf-8-sig') as f:
