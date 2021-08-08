@@ -12,7 +12,7 @@ xyz+3x^2+6x; 3; 2x + 5y + x^-2 + 6, some invalid polynomials example: 3x**y;
 2x**2 + 3; 2x^2x^3; 5x**3 + xy**6
 Feel free to leave the polynomial unmerged in every term, 
 because my program will automatically do it when it analyze your polynomial. To
-merge through all of the terms just do a.standarlize() where a is a polynomial object.'''
+merge through all of the terms just do a.standardize() where a is a polynomial object.'''
 
 
 def separate(co):
@@ -250,8 +250,8 @@ class polynomial:
                 return poly('0')
             temp = copy.deepcopy(self)
             temp2 = copy.deepcopy(other)
-            temp.standarlize()
-            temp2.standarlize()
+            temp.standardize()
+            temp2.standardize()
             temp.fraction = [x * temp2 for x in temp.fraction]
             if len(self.polydict[self.varname[0]]) == 1 and len(
                     other.polydict[other.varname[0]]) == 1:
@@ -325,7 +325,7 @@ class polynomial:
     def merge(self):
         '''Merge terms with same powers of the polynomial. Return a new polynomial after standarlization.'''
         temp = self.copy()
-        temp.standarlize()
+        temp.standardize()
         return temp
 
     def simp(self):
@@ -343,8 +343,8 @@ class polynomial:
         else:
             temp1 = copy.deepcopy(self)
             temp2 = copy.deepcopy(other)
-            temp1.standarlize()
-            temp2.standarlize()
+            temp1.standardize()
+            temp2.standardize()
             if (temp1 - temp2
                 ).__str__() == '0' and temp1.fraction == temp2.fraction:
                 return True
@@ -515,7 +515,7 @@ class polynomial:
                                 else:
                                     quo.colist[g][h] = fractions.Fraction(
                                         quo.colist[g][h]).limit_denominator()
-                    quo.standarlize()
+                    quo.standardize()
                     return quo
                 else:
                     remainder = copy.deepcopy(temp)
@@ -536,10 +536,10 @@ class polynomial:
                         return fract(temp, temp2)
                     #while all(x not in poly(divisor.__str__()).varname for x in poly(divide.__str__()).varname):
                     #print(temp, temp2)
-                    #temp.standarlize(True)
+                    #temp.standardize(True)
                     #divide, divisor = div(temp, temp2)
                     #if all(x not in poly(divisor.__str__()).varname for x in poly(divide.__str__()).varname):
-                    #temp2.standarlize(True)
+                    #temp2.standardize(True)
                     #divide, divisor = div(temp, temp2)
                     #else:
                     #break
@@ -563,7 +563,7 @@ class polynomial:
                         result += rep + ' + '
                         remainder = poly(remainder.mono())
                         remainder -= temp2 * multi
-                        remainder.standarlize()
+                        remainder.standardize()
                         for g in range(len(remainder.colist)):
                             for h in range(len(remainder.colist[g])):
                                 if isinstance(remainder.colist[g][h], float):
@@ -591,7 +591,7 @@ class polynomial:
                                 for var in remainder.varname
                             ], remainder.varname)
                         divide = copy.deepcopy(divide)
-                        divide.standarlize()
+                        divide.standardize()
                         if isinstance(divide / divisor, fract):
                             break
                         if remainder.__str__() == '0':
@@ -809,7 +809,7 @@ class polynomial:
             result = result[:-3]
         return result
 
-    def standarlize(self, swap=False):
+    def standardize(self, swap=False):
         ''' Merge terms with same power and sort the terms with order of decreasing powers.
         Return the polynomial representation in standard form defined above.'''
         t = 0
@@ -992,8 +992,8 @@ class polynomial:
     def __call__(self, *x, mode='val'):
         if mode == 'val':
             return self.val(*x)
-        elif mode == 'standarlize':
-            self.standarlize()
+        elif mode == 'standardize':
+            self.standardize()
 
 
 def rounding(num, dec=None, tostr=False):
@@ -1868,8 +1868,8 @@ def poly(a, root=1):
     return polynomial(colist, powerlist, varname, root, equation)
 
 
-def standarlize(a):
-    a.standarlize()
+def standardize(a):
+    a.standardize()
 
 
 def updatedict(a):
