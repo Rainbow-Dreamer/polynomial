@@ -3,22 +3,22 @@ from os import path
 
 setup(
     name='polynomial',
-    packages = ['polynomial'],
-    version='0.14',
-    license='AGPLv3',
+    packages=['polynomial'],
+    version='0.15',
+    license='LGPLv2.1',
     description=
     'This is a professional polynomial calculator and analyzer python module.',
     author='Rainbow-Dreamer',
     author_email='1036889495@qq.com',
     url='https://github.com/Rainbow-Dreamer/polynomial',
     download_url=
-    'https://github.com/Rainbow-Dreamer/matrixpro/archive/0.14.tar.gz',
+    'https://github.com/Rainbow-Dreamer/matrixpro/archive/0.15.tar.gz',
     keywords=['matrix', 'mathematics', 'statistics'],
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Build Tools',
-        'License :: OSI Approved :: GNU Affero General Public License v3',
+        'License :: OSI Approved :: GNU Lesser General Public License v2 or later (LGPLv2+)',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
