@@ -26,7 +26,7 @@ function_names = dir(__import__('polynomial.polynomial'))
 from polynomial.polynomial import *
 
 os.chdir('polynomial editor')
-with open('config.py', encoding='utf-8-sig') as f:
+with open('config.py', encoding='utf-8') as f:
     exec(f.read())
 
 
@@ -412,8 +412,7 @@ class Root(Tk):
         if filename:
             self.current_filename_path = filename
             try:
-                with open(filename, encoding='utf-8-sig',
-                          errors='ignore') as f:
+                with open(filename, encoding='utf-8', errors='ignore') as f:
                     self.inputs.delete('1.0', END)
                     self.inputs.insert(END, f.read())
                     self.inputs.see(INSERT)
@@ -685,7 +684,7 @@ class Root(Tk):
                         config_dict[each] = eval(changed)
                     else:
                         config_dict[each] = changed
-        with open('config.py', 'w', encoding='utf-8-sig') as f:
+        with open('config.py', 'w', encoding='utf-8') as f:
             formated_config = FormatCode(f'config_dict = {config_dict}\n')[0]
             f.write(formated_config)
         if not outer:
@@ -752,9 +751,8 @@ class Root(Tk):
         if current_text != self.last_save:
             if self.current_filename_path:
                 self.last_save = self.inputs.get('1.0', 'end-1c')
-                with open(self.current_filename_path,
-                          'w',
-                          encoding='utf-8-sig') as f:
+                with open(self.current_filename_path, 'w',
+                          encoding='utf-8') as f:
                     f.write(self.last_save)
             else:
                 self.save()
@@ -769,7 +767,7 @@ class Root(Tk):
         if filename:
             self.current_filename_path = filename
             current_text = self.inputs.get('1.0', 'end-1c')
-            with open(filename, 'w', encoding='utf-8-sig') as f:
+            with open(filename, 'w', encoding='utf-8') as f:
                 f.write(current_text)
             self.last_save = current_text
 
@@ -1230,8 +1228,9 @@ class Root(Tk):
         if not self.case_sensitive:
             all_text = all_text.lower()
             current = current.lower()
-        self.search_inds_list = [[m.start(), m.end()]
-                                 for m in re.finditer(current, all_text)]
+        self.search_inds_list = [[
+            m.start(), m.end()
+        ] for m in re.finditer(re.escape(current), all_text)]
         for each in self.search_inds_list:
             ind1, ind2 = each
             newline = "\n"
